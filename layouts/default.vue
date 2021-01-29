@@ -5,7 +5,7 @@
       :indeterminate="topLoader"
       absolute
       top
-      color="white"
+      color="grey"
       style="z-index: 9;"
       height="2"
     ></v-progress-linear>
