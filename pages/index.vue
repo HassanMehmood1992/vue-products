@@ -63,7 +63,7 @@
 
 <script>
 import Welcome from "@/components/welcome.vue";
-import { map, debounce } from "lodash";
+import { map, debounce, slice, union } from "lodash";
 
 export default {
   components: {
@@ -103,9 +103,9 @@ export default {
         .get(`products/v2/getProducts`)
         .then(response => {
           if (response.data.length > 0) {
-            that.products = _.union(
+            that.products = union(
               that.products,
-              map(response.data, item => item.product)
+              slice(map(response.data, item => item.product),0,12)
             );
           }
         })
