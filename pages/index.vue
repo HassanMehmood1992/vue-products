@@ -10,12 +10,10 @@
         </v-card>
       </v-flex>
     </v-layout>
-    <div style="margin: 20px;">
-      {{ items[0] }}
-    </div>
+
     <v-layout row wrap class="" v-if="items.length > 0">
       <template v-for="product in items">
-        <v-flex md3 :key="product.id" class=" pa-2">
+        <v-flex md3 sm4 xs6 :key="product.id" class=" pa-2">
           <v-hover v-slot:default="{ hover }">
             <v-card
               class="mx-auto my-12"
@@ -43,12 +41,6 @@
               <v-card-text class="pt-0">
                 <div class="subtitle-1">$ {{ product.old_price }}</div>
               </v-card-text>
-
-              <!-- <v-card-actions>
-              <v-btn color="deep-purple lighten-2" text @click="reserve">
-                Reserve
-              </v-btn>
-            </v-card-actions> -->
             </v-card>
           </v-hover>
         </v-flex>
@@ -60,16 +52,6 @@
         Sorry! We are out of service at the moment
       </v-flex>
     </v-layout>
-    <!-- <v-layout row wrap v-for="product in items" :key="product.id">
-      <v-flex md6>
-        Name: {{ product.name }} Brand:
-        {{ product.brand ? product.brand.name : " -" }} Price:
-        {{ product.old_price }}
-      </v-flex>
-      <v-flex md6 :key="product.id">
-        <img :src="`${$imagesCDN}${product.image.hash}`" height="90px" />
-      </v-flex>
-    </v-layout> -->
   </v-container>
 </template>
 
