@@ -1,5 +1,5 @@
 ## Shophub
- A simple shopping listing and details page for products build on Vue, Vuetify, and NUXT. Created re-useable components, load more and debounce api call for loading more data from server. Implemented scroll to top functionality.
+ A simple shopping listing and details page for products build on Vue, Vuetify, and NUXT. Created re-usable components, load more and debounce api call for loading more data from server. Implemented scroll to top functionality.
 
 ## Demo
 
