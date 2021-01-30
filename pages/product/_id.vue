@@ -63,8 +63,8 @@
         </v-layout>
 
         <v-layout v-if="relatedProducts.length == 0 && !loading">
-          <v-flex class=" body-2">
-            No similar products found
+          <v-flex class="body-2 text-center">
+            No related products found
           </v-flex>
         </v-layout>
       </v-col>
@@ -84,7 +84,7 @@ export default {
   data: () => ({
     product: null,
     relatedProducts: [],
-    loading: true,
+    loading: false,
     loadingItem: false
   }),
   created() {
