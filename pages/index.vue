@@ -27,6 +27,7 @@
               <v-img
                 height="250"
                 :src="`${$imagesCDN}${product.image.hash}`"
+                :lazy-src="`${$imagesCDN}${product.image.hash}`"
               ></v-img>
 
               <div class="font-weight-medium line-height-150 text-h6 pa-4">

@@ -15,6 +15,9 @@
             :src="
               `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
             "
+            :lazy-src="
+              `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
+            "
           ></v-img>
         </v-col>
         <v-col cols="9">
