@@ -150,7 +150,7 @@ export default {
   data: () => ({
     product: null,
     relatedProducts: [],
-    loading: false,
+    loading: true,
     loadingItem: false
   }),
   created() {
