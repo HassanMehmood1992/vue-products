@@ -18,55 +18,7 @@
           ></v-img>
         </v-col>
         <v-col cols="9">
-          <div class="text-h4">
-            {{ product.name }}
-          </div>
-          <div class="text-h6 accent--text">
-            {{ product.brand ? product.brand.name : " -" }}
-          </div>
-          <div class="text-h6 accent--text">$ {{ product.old_price }}</div>
-
-          <!-- Status  -->
-          <div>
-            <div class="pt-4 font-weight-normal">
-              Status
-            </div>
-
-            <div class="font-weight-medium accent--text">
-              {{ product.soldOut ? "Sold out" : "In stock" }}
-            </div>
-          </div>
-
-          <!-- Conditions  -->
-          <div>
-            <div class="pt-4 font-weight-normal">
-              Condition
-            </div>
-
-            <div class="font-weight-medium accent--text">
-              {{ product.new ? "New" : "Used" }}
-            </div>
-          </div>
-
-          <!-- Categories -->
-          <div v-if="product.categories && product.categories.length > 0">
-            <div class="pb-1 pt-4 font-weight-normal">
-              Categories
-            </div>
-
-            <div class="d-flex flex-wrap" style="width:90%">
-              <template v-for="cat in product.categories">
-                <v-chip
-                  :key="cat"
-                  outlined
-                  color="black"
-                  class="px-2 mr-2 mt-1"
-                >
-                  {{ cat }}
-                </v-chip>
-              </template>
-            </div>
-          </div>
+          <product-details :product="product"></product-details>
         </v-col>
       </v-row>
     </v-layout>
@@ -100,37 +52,10 @@
           fill-height
         >
           <template v-for="product in relatedProducts">
-            <v-flex md2 sm3 xs6 :key="product.id" class="pa-2">
-              <v-hover v-slot:default="{ hover }">
-                <v-card
-                  class="mx-auto my-12"
-                  tile
-                  :elevation="hover ? 5 : 1"
-                  :to="{ name: 'product-id', params: { id: product.id } }"
-                  color="#F5F5F5"
-                >
-                  <v-img
-                    height="100"
-                    :src="`${$imagesCDN}${product.image.hash}`"
-                  ></v-img>
-
-                  <div
-                    class="font-weight-medium line-height-150 subtitle-2 pa-4 pb-2"
-                  >
-                    {{ product.name }}
-                  </div>
-
-                  <v-card-text class="py-0">
-                    <div class="caption accent--text">
-                      {{ product.brand ? product.brand.name : " -" }}
-                    </div>
-                  </v-card-text>
-                  <v-card-text class="pt-0">
-                    <div class="caption">$ {{ product.old_price }}</div>
-                  </v-card-text>
-                </v-card>
-              </v-hover>
-            </v-flex>
+            <related-product
+              :product="product"
+              :key="product.id"
+            ></related-product>
           </template>
         </v-layout>
 
@@ -146,7 +71,13 @@
 
 <script>
 import { map, size, slice } from "lodash";
+import relatedProduct from "@/components/relatedProducts";
+import productDetails from "@/components/productDetails";
 export default {
+  components: {
+    relatedProduct: relatedProduct,
+    productDetails: productDetails
+  },
   data: () => ({
     product: null,
     relatedProducts: [],
