@@ -24,15 +24,10 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 # Screen Shots
 
-![alt text](https://user-images.githubusercontent.com/17563392/97218870-b31cf800-17e2-11eb-8dbf-ee14d05c5b43.png?raw=true)
+![alt text](https://user-images.githubusercontent.com/17563392/106355749-68e07100-6313-11eb-8a11-0acb01fb61db.png?raw=true)
 
-![alt text](https://user-images.githubusercontent.com/17563392/97219192-1575f880-17e3-11eb-9123-1057a891e305.png?raw=true)
+![alt text](https://user-images.githubusercontent.com/17563392/106355787-a7762b80-6313-11eb-9e00-b3e00ac191af.png?raw=true)
 
-![alt text](https://user-images.githubusercontent.com/17563392/97219363-5706a380-17e3-11eb-8d9e-6ada84570f3e.png?raw=true)
-
-![alt text](https://user-images.githubusercontent.com/17563392/97219544-97662180-17e3-11eb-9a54-17cf59fa4813.png?raw=true)
-
-![alt text](https://user-images.githubusercontent.com/17563392/97219821-ff1c6c80-17e3-11eb-90f5-6d5c371b8049.png?raw=true)
 
 
 
