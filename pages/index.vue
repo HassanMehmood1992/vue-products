@@ -52,21 +52,35 @@
         Sorry! We are out of service at the moment
       </v-flex>
     </v-layout>
+
+    <v-layout v-if="loading" class="mt-1">
+      <v-flex class="text-center">
+        <v-progress-circular indeterminate color="primary" :width="3" />
+      </v-flex>
+    </v-layout>
   </v-container>
 </template>
 
 <script>
 import Welcome from "@/components/welcome.vue";
-import { map } from "lodash";
+import { map, debounce } from "lodash";
 
 export default {
   components: {
     Welcome
   },
   data: () => ({
-    items: [],
+    products: [],
     loading: false
   }),
+  computed: {
+    reachedEnd() {
+      return this.$store.getters["scrollEvents/reachedEnd"];
+    },
+    items() {
+      return this.products.sort((a, b) => a.old_price - b.old_price);
+    }
+  },
   mounted() {
     this.fetchProducts();
   },
@@ -77,14 +91,38 @@ export default {
         .get(`products/v2/getProducts`)
         .then(response => {
           if (response.data.length > 0) {
-            this.items = map(response.data, item => item.product).sort(
-              (a, b) => a.old_price - b.old_price
-            );
+            this.products = map(response.data, item => item.product);
           }
         })
         .finally(() => {
           this.loading = false;
         });
+    },
+    fetchingMoreProductsDebouncer: debounce(that => {
+      axios
+        .get(`products/v2/getProducts`)
+        .then(response => {
+          if (response.data.length > 0) {
+            that.products = _.union(
+              that.products,
+              map(response.data, item => item.product)
+            );
+          }
+        })
+        .finally(() => {
+          that.loading = false;
+        });
+    }, 1000)
+  },
+  watch: {
+    reachedEnd: {
+      handler() {
+        if (this.reachedEnd) {
+          this.loading = true;
+          this.fetchingMoreProductsDebouncer(this);
+        }
+      },
+      deep: true
     }
   }
 };

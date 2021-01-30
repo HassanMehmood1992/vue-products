@@ -21,12 +21,35 @@
       </v-avatar>
     </v-app-bar>
     <v-main>
-      <vue-perfect-scrollbar id="page-wrapper">
+      <vue-perfect-scrollbar
+        id="page-wrapper"
+        @ps-scroll-y="onScroll"
+        @ps-y-reach-end="reachEnd"
+      >
         <v-container fluid class="pt-0">
           <nuxt />
         </v-container>
       </vue-perfect-scrollbar>
     </v-main>
+
+    <v-layout column align-center class="fab-container">
+      <v-tooltip left>
+        <template v-slot:activator="{ on }">
+          <v-btn
+            fab="fab"
+            small
+            v-show="!onTop"
+            color="primary"
+            v-on="on"
+            @click="toTop"
+            class="toTopBtn"
+          >
+            <v-icon color="white">mdi-chevron-up</v-icon>
+          </v-btn>
+        </template>
+        <span>Scroll to Top</span>
+      </v-tooltip>
+    </v-layout>
   </v-app>
 </template>
 
@@ -42,8 +65,35 @@ export default {
       title: "Hassan Mehmood",
       scrollSettings: {
         maxScrollbarLength: 160
-      }
+      },
+      onTop: true
     };
+  },
+  methods: {
+    toTop() {
+      let options = { container: "#page-wrapper" };
+      this.$scrollTo("#page-wrapper", options);
+      this.ontop = true;
+    },
+    onScroll() {
+      let elmnt = document.getElementById("page-wrapper");
+      this.onTop = elmnt.scrollTop == 0 ? true : false;
+      this.$store.dispatch("scrollEvents/setEvent", {
+        name: "reachedEnd",
+        value: false
+      });
+      this.$store.dispatch("scrollEvents/setEvent", {
+        name: "scrollY",
+        value: true
+      });
+    },
+
+    reachEnd() {
+      this.$store.dispatch("scrollEvents/setEvent", {
+        name: "reachedEnd",
+        value: true
+      });
+    }
   },
   computed: {
     topLoader() {
@@ -59,5 +109,15 @@ export default {
   // max-height: 320px;
   overflow-x: hidden;
   max-height: calc(100vh - 54px) !important;
+}
+.toTopBtn.v-btn--bottom:not(.v-btn--absolute) {
+  bottom: 24px;
+  margin-right: 37px !important;
+  z-index: 999;
+}
+.fab-container {
+  position: fixed;
+  bottom: 10px;
+  right: 35px !important;
 }
 </style>
