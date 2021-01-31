@@ -10,11 +10,14 @@
         height="400"
         color="#F5F5F5"
       >
-        <v-img
-          height="250"
-          :src="`${$imagesCDN}${product.image.hash}`"
-          :lazy-src="`${$imagesCDN}${product.image.hash}`"
-        ></v-img>
+        <div class="image-container">
+          <img
+            height="250"
+            :src="
+              `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
+            "
+          />
+        </div>
 
         <div class="font-weight-medium line-height-150 text-h6 pa-4">
           {{ product.name }}
@@ -41,5 +44,10 @@ export default {
 <style lang="scss">
 .line-height-150 {
   line-height: 1.5rem !important;
+}
+.image-container {
+  max-height: 250px;
+  background: white;
+  text-align: center;
 }
 </style>

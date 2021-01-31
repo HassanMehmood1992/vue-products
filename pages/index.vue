@@ -42,16 +42,16 @@ export default {
     productCard
   },
   data: () => ({
-    products: [],
+    items: [],
     loading: false
   }),
   computed: {
     reachedEnd() {
       return this.$store.getters["scrollEvents/reachedEnd"];
-    },
-    items() {
-      return this.products.sort((a, b) => a.old_price - b.old_price);
     }
+    // items() {
+    //   return this.products;
+    // }
   },
   mounted() {
     this.fetchProducts();
@@ -63,7 +63,10 @@ export default {
         .get(`products/v2/getProducts`)
         .then(response => {
           if (response.data.length > 0) {
-            this.products = map(response.data, item => item.product);
+            const products = map(response.data, item => item.product).sort(
+              (a, b) => a.old_price - b.old_price
+            );
+            this.items = Object.freeze(products);
           }
         })
         .finally(() => {
@@ -75,14 +78,14 @@ export default {
         .get(`products/v2/getProducts`)
         .then(response => {
           if (response.data.length > 0) {
-            that.products = union(
-              that.products,
+            that.items = union(
+              that.items,
               slice(
                 map(response.data, item => item.product),
                 0,
                 12
               )
-            );
+            ).sort((a, b) => a.old_price - b.old_price);
           }
         })
         .finally(() => {
