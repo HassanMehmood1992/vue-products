@@ -48,7 +48,9 @@
           </template>
         </v-layout>
 
-        <v-layout v-if="relatedProducts.length == 0 && !loading">
+        <v-layout
+          v-if="relatedProducts.length == 0 && !loading && !loadingItem"
+        >
           <v-flex class="body-2 text-center">
             No related products found
           </v-flex>
