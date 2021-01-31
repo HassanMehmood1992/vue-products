@@ -78,7 +78,7 @@ export default {
         .get(`products/v2/getProducts`)
         .then(response => {
           if (response.data.length > 0) {
-            that.items = union(
+            const products = union(
               that.items,
               slice(
                 map(response.data, item => item.product),
@@ -86,6 +86,8 @@ export default {
                 12
               )
             ).sort((a, b) => a.old_price - b.old_price);
+
+            that.items = Object.freeze(products);
           }
         })
         .finally(() => {

@@ -104,7 +104,7 @@ export default {
               item => item.product
             ).sort((a, b) => a.old_price - b.old_price);
 
-            this.relatedProducts = slice(relatedProducts, 0, 12);
+            this.relatedProducts = Object.freeze(slice(relatedProducts, 0, 12));
           }
         })
         .finally(() => {
