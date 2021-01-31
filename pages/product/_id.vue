@@ -9,21 +9,7 @@
       <v-card-text> </v-card-text
     ></v-card>
     <v-layout v-if="product">
-      <v-row class="product">
-        <v-col cols="3">
-          <v-img
-            :src="
-              `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
-            "
-            :lazy-src="
-              `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
-            "
-          ></v-img>
-        </v-col>
-        <v-col cols="9">
-          <product-details :product="product"></product-details>
-        </v-col>
-      </v-row>
+      <product-details :product="product"></product-details>
     </v-layout>
 
     <v-flex v-if="loadingItem" class="text-center">
@@ -143,13 +129,5 @@ export default {
   font-weight: 900;
   line-height: 40px;
   letter-spacing: 0.35px;
-}
-.product {
-  .title {
-    font-size: 2.286rem;
-    font-weight: 900;
-    line-height: 40px;
-    letter-spacing: 0.35px;
-  }
 }
 </style>
