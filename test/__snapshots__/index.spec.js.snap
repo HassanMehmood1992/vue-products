@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Index/Index page is fully functional 1`] = `
+<v-container-stub
+  tag="div"
+>
+  <v-layout-stub
+    class="my-10"
+    row=""
+    tag="div"
+    wrap=""
+  >
+    <welcome-stub />
+  </v-layout-stub>
+   
+  <v-layout-stub
+    row=""
+    tag="div"
+    wrap=""
+  >
+    <v-flex-stub
+      tag="div"
+    >
+      <v-card-stub
+        class="mx-2"
+        flat="true"
+        loaderheight="4"
+        tag="div"
+      >
+        <v-card-title-stub
+          class="px-0"
+          id="products"
+        >
+          Products
+        </v-card-title-stub>
+      </v-card-stub>
+    </v-flex-stub>
+  </v-layout-stub>
+   
+  <!---->
+   
+  <!---->
+   
+  <v-layout-stub
+    class="mt-1"
+    tag="div"
+  >
+    <v-flex-stub
+      class="text-center"
+      tag="div"
+    >
+      <v-progress-circular-stub
+        color="primary"
+        indeterminate="true"
+        rotate="0"
+        size="32"
+        value="0"
+        width="3"
+      />
+    </v-flex-stub>
+  </v-layout-stub>
+</v-container-stub>
+`;

@@ -1,5 +1,5 @@
 <template>
-  <v-flex md2 sm3 xs6 :key="product.id" class="pa-2">
+  <v-flex md2 sm3 xs6 class="pa-2">
     <v-hover v-slot:default="{ hover }">
       <v-card
         class="mx-auto my-12"

@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Welcome component is fully functional 1`] = `
+<div
+  class="flex mx-auto sm6"
+>
+  <div
+    class="mx-2 v-card v-card--flat v-sheet theme--light"
+  >
+    <div
+      class="v-card__text pa-0"
+    >
+      <div
+        class="flex text-center"
+      >
+        <img
+          class="ma-3"
+          src="undefinedgift.png"
+          width="100px"
+        />
+         
+        <div
+          class="py-3 welcome primary--text"
+        >
+          Welcome To Shophub
+        </div>
+         
+        <div
+          class="text-h6"
+        >
+          Enjoy our favorite products ! Its Awesome
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;
