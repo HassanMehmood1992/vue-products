@@ -18,6 +18,9 @@ $ npm install
 # serve with hot reload at localhost:3000
 $ npm run dev
 
+# run tests
+$ npm run test
+
 ```
 
 For detailed explanation on how things work, check out [Nuxt.js docs](https://nuxtjs.org).
@@ -28,12 +31,19 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 
 ![alt text](https://user-images.githubusercontent.com/17563392/106355787-a7762b80-6313-11eb-9e00-b3e00ac191af.png?raw=true)
 
+
+# Tests
+
+Basic testing of components is added
+
+![alt text](https://user-images.githubusercontent.com/17563392/106513041-d810bd80-64eb-11eb-91df-8df2be62014c.png?raw=true)
+
+
 # Upcoming
 
 - Improve UI design by adding more views like list or table view
 - Product details page can other elements like top searches or hot items.
 - Containerizing the solution with Dockers.
-- Add Jest Testing for basic components.
 
 
 
