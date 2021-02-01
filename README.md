@@ -1,5 +1,5 @@
 ## Shophub
- A simple shopping listing and details page for products build on Vue, Vuetify, and NUXT. Created re-usable components, load more and debounce api call for loading more data from server. Implemented scroll to top functionality.
+ A simple shopping listing and details page for products build on Vue, Vuetify, and NUXT. Created re-usable components for the product and product details, load more functionality added using [vue-perfect-scrollbar](https://www.npmjs.com/package/vue-perfect-scrollbar). Implemented scroll to top using [vue-scrollTo](https://www.npmjs.com/package/vue-scrollto). Application design is designed using [vuetify](https://vuetifyjs.com/en/) css classes and flex layout components including the typography.
 
 ## Demo
 
@@ -27,6 +27,13 @@ For detailed explanation on how things work, check out [Nuxt.js docs](https://nu
 ![alt text](https://user-images.githubusercontent.com/17563392/106355749-68e07100-6313-11eb-8a11-0acb01fb61db.png?raw=true)
 
 ![alt text](https://user-images.githubusercontent.com/17563392/106355787-a7762b80-6313-11eb-9e00-b3e00ac191af.png?raw=true)
+
+# Upcoming
+
+- Improve UI design by adding more views like list or table view
+- Product details page can other elements like top searches or hot items.
+- Containerizing the solution with Dockers.
+- Add Jest Testing for basic components.
 
 
 
