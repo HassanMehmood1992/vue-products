@@ -6,21 +6,20 @@
     <v-layout row wrap>
       <v-flex>
         <v-card class="mx-2" flat>
-          <v-card-title class="px-0" id="products">Products</v-card-title>
+          <v-card-title class="px-0">Products</v-card-title>
         </v-card>
       </v-flex>
     </v-layout>
 
     <v-layout row wrap class="" v-if="items.length > 0">
-      <template v-for="product in items">
-        <product-card :product="product" :key="product.id"></product-card>
+      <template v-for="(product, i) in items">
+        <product-card :product="product" :key="i"></product-card>
       </template>
     </v-layout>
 
     <v-layout v-if="items.length == 0 && !loading" class="my-2">
       <v-flex class=" body-2">
-        <span id="error-message">Sorry! We are out of service at the moment
-        </span>
+        Sorry! We are out of service at the moment
       </v-flex>
     </v-layout>
 
@@ -35,7 +34,7 @@
 <script>
 import Welcome from "@/components/welcome.vue";
 import productCard from "@/components/productCard.vue";
-import { map, debounce, slice, union, xorBy } from "lodash";
+import { map, debounce, slice, union } from "lodash";
 
 export default {
   components: {
@@ -63,7 +62,7 @@ export default {
       axios
         .get(`products/v2/getProducts`)
         .then(response => {
-          if (response.data && response.data.length > 0) {
+          if (response.data.length > 0) {
             const products = map(response.data, item => item.product).sort(
               (a, b) => a.old_price - b.old_price
             );
@@ -78,14 +77,17 @@ export default {
       axios
         .get(`products/v2/getProducts`)
         .then(response => {
-          if (response.data && response.data.length > 0) {
-            const products = xorBy(
+          if (response.data.length > 0) {
+            const products = union(
               that.items,
-              map(response.data, item => item.product),
-              "id"
+              slice(
+                map(response.data, item => item.product),
+                0,
+                12
+              )
             ).sort((a, b) => a.old_price - b.old_price);
 
-            that.items = Object.freeze([...that.items, products]);
+            that.items = Object.freeze(products);
           }
         })
         .finally(() => {

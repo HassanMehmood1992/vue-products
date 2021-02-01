@@ -11,12 +11,14 @@
         color="#F5F5F5"
       >
         <div class="image-container">
-          <img
-            height="250"
-            :src="
-              `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
-            "
-          />
+          <span v-if="product.image">
+            <img
+              height="250"
+              :src="
+                `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
+              "
+            />
+          </span>
         </div>
 
         <div class="font-weight-medium line-height-150 text-h6 pa-4">
