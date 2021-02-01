@@ -17,7 +17,7 @@
       </template>
     </v-layout>
 
-    <v-layout v-if="items.length == 0 && !loading">
+    <v-layout v-if="items.length == 0 && !loading" class="my-2">
       <v-flex class=" body-2">
         Sorry! We are out of service at the moment
       </v-flex>
