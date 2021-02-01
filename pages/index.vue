@@ -34,7 +34,7 @@
 <script>
 import Welcome from "@/components/welcome.vue";
 import productCard from "@/components/productCard.vue";
-import { map, debounce, slice, union } from "lodash";
+import { map, debounce, slice, union, xorBy } from "lodash";
 
 export default {
   components: {
@@ -80,7 +80,8 @@ export default {
           if (response.data && response.data.length > 0) {
             const products = xorBy(
               that.items,
-              map(response.data, item => item.product)
+              map(response.data, item => item.product),
+              "id"
             ).sort((a, b) => a.old_price - b.old_price);
 
             that.items = Object.freeze([...that.items, products]);
