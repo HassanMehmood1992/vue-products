@@ -3,10 +3,10 @@
     <v-col cols="3">
       <v-img
         :src="
-          `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
+          `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
         "
         :lazy-src="
-          `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=552&height=552`
+          `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
         "
       ></v-img>
     </v-col>

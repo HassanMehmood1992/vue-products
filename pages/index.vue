@@ -12,8 +12,8 @@
     </v-layout>
 
     <v-layout row wrap class="" v-if="items.length > 0">
-      <template v-for="(product, i) in items">
-        <product-card :product="product" :key="i"></product-card>
+      <template v-for="product in items">
+        <product-card :product="product" :key="product.id"></product-card>
       </template>
     </v-layout>
 
@@ -62,7 +62,7 @@ export default {
       axios
         .get(`products/v2/getProducts`)
         .then(response => {
-          if (response.data.length > 0) {
+          if (response.data && response.data.length > 0) {
             const products = map(response.data, item => item.product).sort(
               (a, b) => a.old_price - b.old_price
             );
@@ -77,17 +77,13 @@ export default {
       axios
         .get(`products/v2/getProducts`)
         .then(response => {
-          if (response.data.length > 0) {
-            const products = union(
+          if (response.data && response.data.length > 0) {
+            const products = xorBy(
               that.items,
-              slice(
-                map(response.data, item => item.product),
-                0,
-                12
-              )
+              map(response.data, item => item.product)
             ).sort((a, b) => a.old_price - b.old_price);
 
-            that.items = Object.freeze(products);
+            that.items = Object.freeze([...that.items, products]);
           }
         })
         .finally(() => {

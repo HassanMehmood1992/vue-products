@@ -84,10 +84,9 @@ export default {
       axios
         .get(`products/v2/getProducts?productId=${this.$route.params.id}`)
         .then(response => {
-          this.product =
-            size(response.data) > 0
-              ? map(response.data, item => item.product)[0]
-              : null;
+          if (response.data && response.data.length > 0) {
+            this.product = map(response.data, item => item.product)[0];
+          }
         })
         .finally(() => {
           this.loadingItem = false;
@@ -98,12 +97,11 @@ export default {
       axios
         .get(`products/v2/getProducts`)
         .then(response => {
-          if (response.data.length > 0) {
+          if (response.data && response.data.length > 0) {
             const relatedProducts = map(
               response.data,
               item => item.product
             ).sort((a, b) => a.old_price - b.old_price);
-
             this.relatedProducts = Object.freeze(slice(relatedProducts, 0, 12));
           }
         })
