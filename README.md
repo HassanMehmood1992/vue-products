@@ -42,8 +42,8 @@ Basic testing of components is added
 # Upcoming
 
 - Improve UI design by adding more views like list or table view
-- Product details page can other elements like top searches or hot items.
-- Containerizing the solution with Dockers.
+- Product details page can have other elements like top searches or hot items.
+- Containerizing the solution with Docker.
 
 
 
