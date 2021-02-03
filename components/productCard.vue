@@ -14,8 +14,9 @@
           <span v-if="product.image">
             <img
               height="250"
+              width="250"
               :src="
-                `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
+                `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=250&height=250`
               "
             />
           </span>
@@ -49,7 +50,11 @@ export default {
 }
 .image-container {
   max-height: 250px;
+
   background: white;
   text-align: center;
+  img {
+    object-fit: contain;
+  }
 }
 </style>

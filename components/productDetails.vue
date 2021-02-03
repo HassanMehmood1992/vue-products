@@ -5,6 +5,7 @@
         :src="
           `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
         "
+        contain
         :lazy-src="
           `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=374&height=250`
         "
