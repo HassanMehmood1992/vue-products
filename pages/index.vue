@@ -6,7 +6,7 @@
     <v-layout row wrap>
       <v-flex>
         <v-card class="mx-2" flat>
-          <v-card-title class="px-0">Products</v-card-title>
+          <v-card-title class="px-0" id="products">Products</v-card-title>
         </v-card>
       </v-flex>
     </v-layout>
@@ -18,7 +18,7 @@
     </v-layout>
 
     <v-layout v-if="items.length == 0 && !loading" class="my-2">
-      <v-flex class=" body-2">
+      <v-flex id="error-message" class=" body-2">
         Sorry! We are out of service at the moment
       </v-flex>
     </v-layout>
