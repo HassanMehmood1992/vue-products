@@ -12,9 +12,10 @@
       >
         <div class="image-container">
           <span v-if="product.image">
-            <img
+            <v-img
               height="250"
               width="250"
+              contain
               :src="
                 `${$imagesCDN}${product.image.hash}?quality=100&progressive=1&bg=ffffff&width=250&height=250`
               "
